@@ -35,6 +35,24 @@ html {
 }
 
 
+.main-grid {
+  color: white;
+  padding: 35px;
+  max-width: 100%;
+  margin: auto;
+    margin-top: auto;
+  margin-top: 162px;
+}
+
+
+.showcase {
+  z-index: 99;
+  max-width: min(330px, 80vw);
+  margin: auto;
+}
+
+
+
 .card-grid.svelte-12sq7m7 {
 display: grid;
 grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
@@ -297,13 +315,8 @@ a:hover, a:focus {
   color: var(--link-hover);
 }
 
-main {
-  color: white;
-  padding: 50px;
-  max-width: 100%;
-  margin: auto;
-}
 
+/*Media Query bearbeiten unnötig drin?*/
 @media screen and (min-width: 600px) {
   header {
       grid-template-columns: 0% 1fr;
@@ -319,12 +332,6 @@ main {
   header {
       grid-template-columns: 0% 1fr;
   }
-}
-
-.showcase {
-  z-index: 99;
-  max-width: min(330px, 80vw);
-  margin: auto;
 }
 
 
@@ -390,45 +397,20 @@ main {
   font-family: 'Poppins', sans-serif;
 }
 
+
+/* Hover-Effekte für die Auswahlkarten */
+.PNL_options:hover {
+  background: #0e0e0e; /* Etwas hellerer Hintergrund beim Hover */
+  transform: translateY(-4px); /* Leichtes Anheben */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Intensivierter Schatten beim Hover */
+}
+
 /* Sichtbar machen des Optionsfeldes */
 .PNL_options.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Styling für die Auswahlkarten */
-.PNL_ChooseCard {
-  position: fixed;
-  bottom: 60px;
-  left: 20px;
-  background: #333; /* Dunkleres Grau */
-  color: #e0e0e0; /* Hellerer Text */
-  padding: 12px 24px;
-  border-radius: 8px; /* Abgerundete Ecken */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Leichterer Schatten */
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.PNL_ChooseCard select {
-  background: #2a2a2a; /* Dunkleres Grau für das Dropdown */
-  color: #e0e0e0; /* Hellerer Text */
-  border: 1px solid #555; /* Dunklere Border */
-  border-radius: 6px; /* Abgerundete Ecken */
-  padding: 8px 12px; /* Innenabstand */
-  width: 100%; /* Volle Breite */
-  transition: background 0.3s ease, border-color 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-
-/* Hover-Effekte für die Auswahlkarten */
-.PNL_ChooseCard:hover {
-  background: #444; /* Etwas hellerer Hintergrund beim Hover */
-  transform: translateY(-4px); /* Leichtes Anheben */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Intensivierter Schatten beim Hover */
-}
 
 /* Styling für das Dropdown-Menü */
 .PNL_options select {
@@ -480,6 +462,42 @@ main {
   border-color: #777; /* Hellerer Rand beim Fokussieren */
 }
 
+/* Styling für die Auswahlkarten */
+.PNL_ChooseCard {
+  position: fixed;
+  z-index: 66;
+  bottom: 60px;
+  left: 20px;
+  background: #1e1e1e; /* Tiefes Dunkelgrau für einen modernen Look */
+  border-radius: 12px; /* Größere abgerundete Ecken */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Tieferer, weicherer Schatten */
+  padding: 12px 24px;
+  border-radius: 8px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Leichterer Schatten */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.PNL_ChooseCard select {
+  background: #2a2a2a; /* Dunkleres Grau für das Dropdown */
+  color: #e0e0e0; /* Hellerer Text */
+  border: 1px solid #555; /* Dunklere Border */
+  border-radius: 6px; /* Abgerundete Ecken */
+  padding: 8px 12px; /* Innenabstand */
+  width: 100%; /* Volle Breite */
+  transition: background 0.3s ease, border-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* Hover-Effekte für die Auswahlkarten */
+.PNL_ChooseCard:hover {
+  background: #0e0e0e; /* Etwas hellerer Hintergrund beim Hover */
+  transform: translateY(-4px); /* Leichtes Anheben */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Intensivierter Schatten beim Hover */
+}
+
 /* Styling für die Infos */
 .PNL_Infos {
   position: fixed;
@@ -514,13 +532,17 @@ main {
   display: block;
   margin-bottom: 5px;
   font-weight: 600; /* Bold for the label */
+  font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
 
 /* Optional: Styling for the options in the select */
 .filtering option {
-  background-color: #000000; /* Background color for options */
-  color: #ffffff; /* Text color for options */
+  background: #1e1e1e; /* Tiefes Dunkelgrau für einen modernen Look */
+  border-radius: 12px; /* Größere abgerundete Ecken */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Tieferer, weicherer Schatten */
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -528,8 +550,9 @@ main {
   position: fixed;
   bottom: 60px;
   right: 20px;
-  background: #333; /* Dunkleres Grau */
-  color: #e0e0e0; /* Hellerer Text */
+  background: #1e1e1e; /* Tiefes Dunkelgrau für einen modernen Look */
+  border-radius: 12px; /* Größere abgerundete Ecken */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Tieferer, weicherer Schatten */
   padding: 12px 24px;
   border-radius: 8px; /* Abgerundete Ecken */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Leichterer Schatten */
@@ -552,7 +575,7 @@ main {
 
 /* Hover-Effekte für die Auswahlkarten */
 .filtering:hover {
-  background: #444; /* Etwas hellerer Hintergrund beim Hover */
+  background: #0e0e0e; /* Etwas hellerer Hintergrund beim Hover */
   transform: translateY(-4px); /* Leichtes Anheben */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Intensivierter Schatten beim Hover */
 }
@@ -726,20 +749,19 @@ clip-path: inset( 11.5% 8.5% 44.5% 8.5% ); wo genau das eingesetzt wird also die
   
   .card[data-rarity="rare holo"]:not([data-gallery="true"]) .card__glare:after,
   .card[data-rarity="rare holo galaxy"] .card__glare:after {
-  
+
     content: "";
-    clip-path: inset( 11.5% 8.5% 44.5% 8.5% );
-    inset(-14.97% -6.17% -2.65% -13.62%) 
-    background-image: 
-      radial-gradient( 
-        farthest-corner circle 
-        at var(--mx) var(--my), 
-        rgb(229, 239, 255) 5%, 
-        rgba(100, 100, 100, 0.5) 35%, 
-        rgba(0, 0, 0, 0.9) 80% 
-      );
-  
+    clip-path: inset(11.5% 8.5% 44.5% 8.5%);
+    inset: -14.97% -6.17% -2.65% -13.62%;
+    
+    background-image: radial-gradient(
+      farthest-corner circle at var(--mx) var(--my),
+      rgb(229, 239, 255) 5%,
+      rgba(100, 100, 100, 0.5) 35%,
+      rgba(0, 0, 0, 0.9) 80%
+    );
   }
+  
   
   .card[data-rarity="rare holo galaxyFullshine"] .card__shine {
   
@@ -1628,133 +1650,3 @@ clip-path: inset( 11.5% 8.5% 44.5% 8.5% ); wo genau das eingesetzt wird also die
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-  SELF TRY
-
-*/
-
-
-
-
-  .card[data-rarity$="cyberpunk"] .card__shine {
-  --space: 5%;
-  --angle: -30deg; /* Etwas stärkerer Winkel für einen dynamischeren Look */
-  --imgsize: 300% 300%; /* Größere Hintergrundgröße für intensiveren Effekt */
-
-  clip-path: inset(3% 5% round 3% / 2%); /* Größere Ecken für futuristischen Look */
-  
-
-  
-  background-blend-mode: screen; /* Hellerer, leuchtender Effekt */
-  background-size: var(--imgsize);
-  background-position: 0% calc(var(--posy) * 1), var(--posx) var(--posy);
-  
-  filter: brightness(calc((var(--hyp)*0.5) + 0.8)) contrast(2.5) saturate(1.5); /* Heller und gesättigter */
-
-  background-image: 
-  url('/img/stylish.png'), /* Dein futuristisches Bild */
-  repeating-linear-gradient(var(--angle),  
-    rgba(0, 255, 255, 0.6) calc(var(--space)*1),
-    rgba(255, 0, 255, 0.6) calc(var(--space)*2), 
-    rgba(255, 255, 0, 0.6) calc(var(--space)*3),  
-    rgba(0, 255, 0, 0.6) calc(var(--space)*4),  
-    rgba(0, 255, 255, 0.6) calc(var(--space)*5),  
-    rgba(255, 0, 255, 0.6) calc(var(--space)*6), 
-    rgba(255, 255, 0, 0.6) calc(var(--space)*7)
-  );
-}
-
-.card[data-rarity$="cyberpunk"] .card__shine:after {
-  content: "";
-  
-  background-image: 
-    radial-gradient(
-      farthest-corner ellipse 
-      at calc(((var(--mx)) * 0.5) + 25%) calc(((var(--my)) * 0.5) + 25%), 
-      rgba(255, 255, 255, 0.4) 5%, /* Leichtes Weiß für Glanz */
-      rgba(100, 0, 100, 0.7) 25%,  /* Dunklerer Violettton für Tiefe */
-      rgba(0, 0, 0, 0.8) 90%        /* Dunkleres Schwarz für mehr Kontrast */
-    );
-
-  background-position: center;
-  background-size: 300% 300%; /* Größere Hintergrundgröße für intensivere Effekte */
-  
-  filter: brightness(calc((var(--hyp)*0.3) + 0.6)) contrast(1.2) saturate(1.5);
-  mix-blend-mode: overlay; /* Neon-Effekt mit Überlagerung */
-}
-
-/*
-
-  GLARE LAYERS
-
-*/
-
-.card[data-rarity$="cyberpunk"] .card__glare {
-  opacity: var(--card-opacity);
-  
-  background-image: 
-    radial-gradient(
-      farthest-corner circle at var(--pointer-x) var(--pointer-y),
-      hsla(0, 0%, 100%, 0.9) 10%,  /* Hellerer Weißton für Glanz */
-      hsla(0, 0%, 100%, 0.6) 20%,  /* Etwas dunklerer Weißton */
-      hsla(0, 0%, 0%, 0.7) 90%    /* Dunkleres Schwarz für Tiefe */
-    );
-
-  filter: brightness(0.8) contrast(1.7); /* Erhöhter Kontrast für intensiven Look */
-}
-
-.card[data-rarity$="cyberpunk"] .card__glare:after {
-  content: "";
-  opacity: var(--card-opacity);
-  
-  background-image: 
-    radial-gradient(
-      farthest-corner circle at var(--pointer-x) var(--pointer-y), 
-      hsl(0, 0%, 100%) 15%,   /* Intensiverer Weißton für Highlight */
-      hsla(0, 0%, 100%, 0.6) 25%, 
-      hsla(0, 0%, 0%, 0.6) 120%
-    );
-
-  filter: brightness(1) contrast(1.7); /* Intensiverer Glanz-Effekt */
-}
-
-/*
-
-  NO MASK
-
-*/
-
-.card:not(.masked)[data-rarity$="cyberpunk"] .card__shine {
-  --foil: none;
-  clip-path: var(--clip-invert);
-}
-
-.card:not(.masked)[data-rarity$="cyberpunk"][data-subtypes^="stage"] .card__glare:after {
-  clip-path: var(--clip-stage-invert);
-}
-
-.card:not(.masked)[data-rarity$="cyberpunk"][data-supertype="trainer"] .card__glare:after {
-  clip-path: var(--clip-trainer-invert);
-}
