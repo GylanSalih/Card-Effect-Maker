@@ -1,10 +1,5 @@
 
 
-// Function to constrain values between a minimum and maximum
-function Pt(o, e = -20, t = 20) {
-  return Math.min(Math.max(o, e), t);
-}
-
 // Flag to control auto-rotation of cards
 var MvAuto = false;
 
@@ -98,14 +93,21 @@ function OrientCard(e) {
   card.style.setProperty('--mx', `${40 - (Ydeg * 2.5)}%`);
   card.style.setProperty('--my', `${5 + Xdeg / 2}%`);
   card.style.setProperty('--tx', `${Ydeg}px`);
-  card.style.setProperty('--ty', `${Xdeg / 20}px`);
-  card.style.setProperty('--pos', `${Xdeg * 2.5}% ${Ydeg * 0.5}%`);
-  card.style.setProperty('--posx', `${50 + Xdeg / 20 + Ydeg * 0.5}%`);
-  card.style.setProperty('--posy', `${50 + Ydeg / 20 + Xdeg / 20}%`);
-  card.style.setProperty('--hyp', Pt(Math.sqrt((mvX - 50) * (mvX - 50) + (mvY - 50) * (mvY - 50)) / 50, 0, 1));
-  card.style.setProperty('--scale', '1.05'); // Scale up on hover
+  card.style.setProperty('--ty', `${Xdeg / 2}px`); // Adjusted for smoother vertical movement
+  card.style.setProperty('--pos', `${Ydeg * 2.5}% ${Xdeg * 0.5}%`);
+  card.style.setProperty('--posx', `${50 + Ydeg / 2 + Xdeg * 0.5}%`);
+  card.style.setProperty('--posy', `${50 + Xdeg / 2 + Ydeg / 2}%`);
   
+  // Calculate the hypotenuse distance for the card effect
+  const hyp = Math.sqrt((mvX * mvX) + (mvY * mvY)) / 50;
+  card.style.setProperty('--hyp', `${Math.min(Math.max(hyp, 0), 1)}`);
+  
+  card.style.setProperty('--scale', '1.05'); // Scale up on hover
+}
 
+// Function to constrain values between a minimum and maximum
+function clamp(value, min = -20, max = 20) {
+  return Math.min(Math.max(value, min), max);
 }
 
 

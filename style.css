@@ -722,9 +722,9 @@ a:hover, a:focus {
     
     background-image: radial-gradient(
       farthest-corner circle at var(--mx) var(--my),
-      rgb(229, 239, 255) 5%,
-      rgba(100, 100, 100, 0.5) 35%,
-      rgba(0, 0, 0, 0.9) 80%
+      rgb(98, 98, 98) 5%,
+      rgba(0, 0, 0, 0.5) 35%,
+      rgba(0, 0, 0) 80%
     );
   }
   
@@ -778,31 +778,32 @@ a:hover, a:focus {
     clip-path: inset(-4.59% -3.53% -1.76% -6.48%);
   
     background-image: 
-      var(--galaxy),
-      var(--galaxy),
-      var(--galaxy), 
-      repeating-linear-gradient(
-        82deg, 
-        rgb(219, 204, 86) calc(var(--space)*1), 
-        rgb(121, 199, 58) calc(var(--space)*2), 
-        rgb(58, 192, 183) calc(var(--space)*3), 
-        rgb(71, 98, 207) calc(var(--space)*4), 
-        rgb(170, 69, 209) calc(var(--space)*5), 
-        rgb(255, 90, 180) calc(var(--space)*6), 
-        rgb(255, 90, 180) calc(var(--space)*7), 
-        rgb(170, 69, 209) calc(var(--space)*8), 
-        rgb(71, 98, 207) calc(var(--space)*9), 
-        rgb(58, 192, 183) calc(var(--space)*10), 
-        rgb(121, 199, 58) calc(var(--space)*11), 
-        rgb(219, 204, 86) calc(var(--space)*12) 
-      ), 
-      radial-gradient( 
-        farthest-corner circle 
-        at var(--mx) var(--my), 
-        rgba(255, 255, 255, 0.6) 5%, 
-        rgba(150, 150, 150, .3) 40%, 
-        rgb(0, 0, 0) 100% 
+    var(--birthday2),
+    var(--galaxy),
+    var(--cosmosbg),
+    repeating-linear-gradient(
+      82deg, 
+      rgb(208, 208, 208) calc(var(--space)*1), 
+      rgb(190, 204, 179) calc(var(--space)*2), 
+      rgb(195, 213, 211) calc(var(--space)*3), 
+      rgb(71, 98, 207) calc(var(--space)*4), 
+      rgb(0, 0, 0) calc(var(--space)*5), 
+      rgb(0, 0, 0) calc(var(--space)*6), 
+      rgb(255, 90, 180) calc(var(--space)*7), 
+      rgb(170, 69, 209) calc(var(--space)*8), 
+      rgb(71, 98, 207) calc(var(--space)*9), 
+      rgb(226, 240, 239) calc(var(--space)*10), 
+      rgb(121, 199, 58) calc(var(--space)*11), 
+      rgb(255, 226, 1) calc(var(--space)*12) 
+    ), 
+    radial-gradient(
+      farthest-corner circle 
+      at var(--mx) var(--my), 
+      rgba(255, 255, 255, 0.6) 5%, 
+      rgba(150, 150, 150, .3) 40%, 
+      rgb(0, 0, 0) 100%
     );
+  
   
     background-blend-mode: color-dodge, color-burn, saturation, screen;
     background-position: var(--galaxybg, cover), var(--galaxybg, cover), var(--galaxybg, cover), calc(((50% - var(--posx)) * 2.5) + 50%) calc(((50% - var(--posy)) * 2.5) + 50%), center;
@@ -813,7 +814,7 @@ a:hover, a:focus {
   
   }
   
-
+  background-image: radial-gradient( farthest-corner circle at var(--mx) var(--my), rgb(98, 98, 98) 5%, rgba(0, 0, 0, 0.5) 35%, rgb(0, 0, 0) 80% );
   
   
 
