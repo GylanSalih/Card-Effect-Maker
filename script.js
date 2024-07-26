@@ -1,7 +1,5 @@
 
 
-
-
 // Function to constrain values between a minimum and maximum
 function Pt(o, e = -20, t = 20) {
   return Math.min(Math.max(o, e), t);
@@ -13,7 +11,7 @@ var MvAuto = false;
 // Store the initial styles of each card for later restoration
 const initialStyles = new WeakMap();
 
-// Save the initial styles of a card
+// Speichern der anfänglichen Stile eines Cards
 function saveInitialStyles(card) {
   initialStyles.set(card, {
     transform: card.style.transform,
@@ -21,15 +19,24 @@ function saveInitialStyles(card) {
     my: card.style.getPropertyValue('--my'),
     tx: card.style.getPropertyValue('--tx'),
     ty: card.style.getPropertyValue('--ty'),
+    s: card.style.getPropertyValue('--s'),
+    o: card.style.getPropertyValue('--o'),
+    rx: card.style.getPropertyValue('--rx'),
+    ry: card.style.getPropertyValue('--ry'),
     pos: card.style.getPropertyValue('--pos'),
     posx: card.style.getPropertyValue('--posx'),
     posy: card.style.getPropertyValue('--posy'),
     hyp: card.style.getPropertyValue('--hyp'),
-    scale: card.style.getPropertyValue('--scale')
+    galaxybg: card.style.getPropertyValue('--galaxybg'),
+    pointerX: card.style.getPropertyValue('--pointer-x'),
+    pointerY: card.style.getPropertyValue('--pointer-y'),
+    cardScale: card.style.getPropertyValue('--card-scale'),
+    cardOpacity: card.style.getPropertyValue('--card-opacity'),
   });
 }
 
-// Restore the initial styles of a card
+
+// Wiederherstellen der anfänglichen Stile eines Cards
 function restoreInitialStyles(card) {
   const styles = initialStyles.get(card);
   if (styles) {
@@ -38,14 +45,21 @@ function restoreInitialStyles(card) {
     card.style.setProperty('--my', styles.my);
     card.style.setProperty('--tx', styles.tx);
     card.style.setProperty('--ty', styles.ty);
+    card.style.setProperty('--s', styles.s);
+    card.style.setProperty('--o', styles.o);
+    card.style.setProperty('--rx', styles.rx);
+    card.style.setProperty('--ry', styles.ry);
     card.style.setProperty('--pos', styles.pos);
     card.style.setProperty('--posx', styles.posx);
     card.style.setProperty('--posy', styles.posy);
     card.style.setProperty('--hyp', styles.hyp);
-    card.style.setProperty('--scale', styles.scale);
+    card.style.setProperty('--galaxybg', styles.galaxybg);
+    card.style.setProperty('--pointer-x', styles.pointerX);
+    card.style.setProperty('--pointer-y', styles.pointerY);
+    card.style.setProperty('--card-scale', styles.cardScale);
+    card.style.setProperty('--card-opacity', styles.cardOpacity);
   }
 }
-
 
 
 
@@ -90,6 +104,8 @@ function OrientCard(e) {
   card.style.setProperty('--posy', `${50 + Ydeg / 20 + Xdeg / 20}%`);
   card.style.setProperty('--hyp', Pt(Math.sqrt((mvX - 50) * (mvX - 50) + (mvY - 50) * (mvY - 50)) / 50, 0, 1));
   card.style.setProperty('--scale', '1.05'); // Scale up on hover
+  
+
 }
 
 
