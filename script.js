@@ -93,7 +93,7 @@ function OrientCard(e) {
   card.style.setProperty('--mx', `${40 - (Ydeg * 2.5)}%`);
   card.style.setProperty('--my', `${5 + Xdeg / 2}%`);
   card.style.setProperty('--tx', `${Ydeg}px`);
-  card.style.setProperty('--ty', `${Xdeg / 2}px`); // Adjusted for smoother vertical movement
+  card.style.setProperty('--ty', `${Xdeg / 0}px`); // Adjusted for smoother vertical movement
   card.style.setProperty('--pos', `${Ydeg * 2.5}% ${Xdeg * 0.5}%`);
   card.style.setProperty('--posx', `${50 + Ydeg / 2 + Xdeg * 0.5}%`);
   card.style.setProperty('--posy', `${50 + Xdeg / 2 + Ydeg / 2}%`);
@@ -109,6 +109,23 @@ function OrientCard(e) {
 function clamp(value, min = -20, max = 20) {
   return Math.min(Math.max(value, min), max);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

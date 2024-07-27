@@ -129,7 +129,7 @@ transition: transform 0.2s ease;
   }
 }
 
-.card__glare {
+.card__glare.svelte-y0attf {
   transform: translateZ(1.4px);
   background: radial-gradient(farthest-corner circle at var(--mx) var(--my),
       rgba(255, 255, 255, .8) 10%, rgba(255, 255, 255, .65) 20%, rgba(0, 0, 0, .5) 90%);
@@ -140,7 +140,7 @@ transition: transform 0.2s ease;
 
 
 
-.card__glare.vmax {
+.card__glare.vmax.svelte-y0attf {
   background: radial-gradient(farthest-corner circle at var(--mx) var(--my),
       rgba(255, 255, 255, .75) 0%, rgba(99, 99, 99, .35) 45%, rgba(0, 0, 0, 1) 120%);
 }
@@ -148,7 +148,7 @@ transition: transform 0.2s ease;
 
 
 
-.card__shine {
+.card__shine.svelte-8e4zv4 {
   display: grid;
   overflow: hidden;
   z-index: 3;
@@ -161,12 +161,12 @@ transition: transform 0.2s ease;
   opacity: var(--o);
 }
 
-.card__shine:before {
+.card__shine.svelte-8e4zv4:before {
   grid-area: 1 / 1;
   transform: translateZ(1px);
 }
 
-.card__shine:after {
+.card__shine.svelte-8e4zv4:after {
   grid-area: 1 / 1;
   transform: translateZ(1.2px);
   border-radius: var(--radius);
@@ -740,7 +740,7 @@ a:hover, a:focus {
         rgba(0, 0, 0, 1) 85%
     );
   }
-
+  background-image: radial-gradient( rgb(60, 60, 60) 5%, rgba(0, 0, 0, 0.73) 35%, rgb(45, 45, 45) 80% );
   /* -------------------- rare holo galaxy ------------------------*/
   
   .card[data-rarity="rare holo galaxy"] .card__glare {
