@@ -22,12 +22,11 @@ body, html {
   margin: 0;
   scroll-behavior: smooth;
   scroll-padding-top: 2em;
-  min-width: 260px;
 }
 
 body {
   font-family: Roboto;
-  background-color: #282722;
+  background-color: #000000;
   font-family: 'Poppins', sans-serif;
   overflow: auto;
 }
@@ -148,7 +147,7 @@ a:hover, a:focus {
 
 #grid-wrapper {
   margin: 4rem auto;
-  width: 300px;
+  width: 100%; /* Vollbreite */
   display: flex;
   justify-content: center;
 }
@@ -157,10 +156,12 @@ a:hover, a:focus {
   background-color: rgba(50, 50, 50, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.3rem;
-  padding: 1rem;
+  padding: 0.5rem; /* Angepasste Polsterung */
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: nowrap; /* Verhindert Zeilenumbruch */
+  overflow-x: auto; /* Ermöglicht horizontales Scrollen bei Bedarf */
 }
 
 label {
@@ -173,8 +174,10 @@ label {
   border: 1px solid transparent;
   border-radius: 0.3rem;
   color: #b16d00;
-  padding: 0.3rem 1.5rem;
+  padding: 0.3rem 1rem; /* Angepasste Polsterung */
   cursor: pointer;
+  display: flex; /* Für zentrierte Inhalte */
+  align-items: center;
 }
 
 .example-button.active {
@@ -190,38 +193,50 @@ label {
   height: 1.25rem;
   width: 1.25rem;
 }
+
 /* -------------------- Grid layout filter END ------------------------*/
-
-/*-------------------------RESET BUTTON Start --------------------------- */
-
-.Resetbutton {
-  position: relative;
-}
-
-.home-link {
-  position: fixed;
-  top: 20px;
-  left: 300px;
-  text-decoration: none;
-}
-
-.home-link i {
-  font-size: 24px;
-  color: #f39c12; /* Customize the color */
-  transition: color 0.3s ease;
-}
-
-.home-link:hover i {
-  color: #b16d00; /* Customize hover color */
-}
-
-/*-------------------------RESET BUTTON END --------------------------- */
 
 /*-------------------------------FILTER START------------------------------- */
 
 /* For the Mouse Tracker */
 /* For the Folie Choose */
 /* For the Image Choose */
+
+/* Styling für die Auswahlkarten */
+.PNL_ChooseCard {
+  position: fixed;
+  z-index: 66;
+  bottom: 60px;
+  left: 20px;
+  background: #1e1e1e; /* Tiefes Dunkelgrau für einen modernen Look */
+  border-radius: 12px; /* Größere abgerundete Ecken */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Tieferer, weicherer Schatten */
+  padding: 12px 24px;
+  border-radius: 8px; /* Abgerundete Ecken */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Leichterer Schatten */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.PNL_ChooseCard select {
+  background: #2a2a2a; /* Dunkleres Grau für das Dropdown */
+  color: #e0e0e0; /* Hellerer Text */
+  border: 1px solid #555; /* Dunklere Border */
+  border-radius: 6px; /* Abgerundete Ecken */
+  padding: 8px 12px; /* Innenabstand */
+  width: 100%; /* Volle Breite */
+  transition: background 0.3s ease, border-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* Hover-Effekte für die Auswahlkarten */
+.PNL_ChooseCard:hover {
+  background: #0e0e0e; /* Etwas hellerer Hintergrund beim Hover */
+  transform: translateY(-4px); /* Leichtes Anheben */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Intensivierter Schatten beim Hover */
+}
 
 /* Allgemeine Styles für das Optionsfeld */
 .PNL_options {
@@ -305,42 +320,6 @@ label {
   border-color: #777; /* Hellerer Rand beim Fokussieren */
 }
 
-/* Styling für die Auswahlkarten */
-.PNL_ChooseCard {
-  position: fixed;
-  z-index: 66;
-  bottom: 60px;
-  left: 20px;
-  background: #1e1e1e; /* Tiefes Dunkelgrau für einen modernen Look */
-  border-radius: 12px; /* Größere abgerundete Ecken */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Tieferer, weicherer Schatten */
-  padding: 12px 24px;
-  border-radius: 8px; /* Abgerundete Ecken */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Leichterer Schatten */
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-.PNL_ChooseCard select {
-  background: #2a2a2a; /* Dunkleres Grau für das Dropdown */
-  color: #e0e0e0; /* Hellerer Text */
-  border: 1px solid #555; /* Dunklere Border */
-  border-radius: 6px; /* Abgerundete Ecken */
-  padding: 8px 12px; /* Innenabstand */
-  width: 100%; /* Volle Breite */
-  transition: background 0.3s ease, border-color 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-}
-
-
-/* Hover-Effekte für die Auswahlkarten */
-.PNL_ChooseCard:hover {
-  background: #0e0e0e; /* Etwas hellerer Hintergrund beim Hover */
-  transform: translateY(-4px); /* Leichtes Anheben */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Intensivierter Schatten beim Hover */
-}
-
 /* Styling für die Infos */
 .PNL_Infos {
   position: fixed;
@@ -353,7 +332,30 @@ label {
 
 
 /*--------------------------------FILTER ENDE------------------------------- */
+/*-------------------------RESET BUTTON Start --------------------------- */
 
+.Resetbutton {
+  position: relative;
+}
+
+.home-link {
+  position: fixed;
+  top: 20px;
+  left: 300px;
+  text-decoration: none;
+}
+
+.home-link i {
+  font-size: 24px;
+  color: #f39c12; /* Customize the color */
+  transition: color 0.3s ease;
+}
+
+.home-link:hover i {
+  color: #b16d00; /* Customize hover color */
+}
+
+/*-------------------------RESET BUTTON END --------------------------- */
 
 /*--------------------------------Sort by Filter START ------------------------------- */
 
@@ -431,10 +433,12 @@ label {
 /* -------------------- CARDS GRID CSS BEGINNT AB HIER ----------- */
 .main-grid {
   color: white;
-  padding: 35px;
+  height: 700px;
+  margin-top: -116px;
   max-width: 100%;
-  margin: 45px auto 0;
+  padding: 104px;
 }
+
 
 /* Card-grid container */
 .card-grid {
@@ -450,7 +454,6 @@ position: relative;
 min-width: 260px;
 transition: transform 0.2s ease;
 }
-
 
 
 
@@ -520,21 +523,43 @@ transition: transform 0.2s ease;
   will-change: transform, visibility;
   position: relative; /* Ensure positioning context for child elements */
   overflow: hidden; /* Hide overflow from child elements */
+  cursor: crosshair;
+  height: 100%;
+  width: 100%;
 }
+
+
 
 .card.interacting.holographic {
   z-index: calc(var(--s) * 120);
 }
 
-/*-- class = card holographic  ENDE --*/
 
+.holographic__section {
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  position: relative;
+  transform: none;
+  width: 100%;
+}
 
-
-
+.card__effects {
+  background-color: #000000;
+  cursor: crosshair;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
 
 .card_images {
-  height: 555px;
+  height: 100%;
+  max-width: none;
   object-fit: cover;
+  position: relative;
+  transform: none;
+  width: 100%;
 }
 
 
@@ -543,6 +568,7 @@ transition: transform 0.2s ease;
 
 
 
+/*-- class = card holographic  ENDE --*/
 
 
 

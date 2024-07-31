@@ -184,23 +184,24 @@ document.addEventListener("DOMContentLoaded", function() {
   const cardGrid = document.querySelector('.card-grid');
 
   categoryFilter.addEventListener('change', function() {
-      const selectedCategory = categoryFilter.value;
-      filterCards(selectedCategory);
+    const selectedCategory = categoryFilter.value;
+    filterCards(selectedCategory);
   });
 
   function filterCards(category) {
-      const cards = Array.from(cardGrid.querySelectorAll('.holographic__section'));
+    const cards = Array.from(cardGrid.querySelectorAll('.holographic__section'));
 
-      cards.forEach(card => {
-          const cardCategory = card.querySelector('.card').getAttribute('data-category');
-          if (category === 'all' || cardCategory === category) {
-              card.style.display = '';
-          } else {
-              card.style.display = 'none';
-          }
-      });
+    cards.forEach(card => {
+      const cardCategory = card.querySelector('.card').getAttribute('data-category');
+      if (category === 'all' || cardCategory === category) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
   }
 });
+
 
 
 // Filter for Grid-Layout Changer
@@ -245,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 });
+
 
 
 //
