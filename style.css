@@ -1,21 +1,45 @@
+
+/* ----------------------------------- */
+/* ----------------------------------- */
+/* ----------- NOTE FOR YOU!---------- */
+/* ----------------------------------- */
+/* ----------------------------------- */
+
+/* -------------Root START---------------------- */
+
 html {
   scroll-behavior: smooth;
 }
 
 
-
-
-#card_front_pic2 {
-  background-image: url('gif/anime-red-eyes-girl.gif');
-  background-size: cover; /* Skaliert das GIF, sodass es den Container vollständig abdeckt */
-  background-position: center; /* Zentriert das GIF im Container */
-  background-repeat: no-repeat; /* Verhindert das Wiederholen des GIFs */
-  background-attachment: fixed; /* Fixiert das Hintergrundbild, wenn gescrollt wird */
-  width: 100%; /* Setzt die Breite auf 100% des Containers */
-  height: 100%; /* Setzt die Höhe auf 100% des Containers */
-  overflow: hidden; /* Verhindert, dass der Inhalt außerhalb des Containers angezeigt wird */
+* {
+  box-sizing: border-box;
 }
 
+body, html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2em;
+  min-width: 260px;
+}
+
+body {
+  font-family: Roboto;
+  background-color: #282722;
+  font-family: 'Poppins', sans-serif;
+  overflow: auto;
+}
+
+a {
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: var(--link-hover);
+}
 
 
 :root {
@@ -52,309 +76,123 @@ html {
 .card {
   --mx: 50%;
   --my: 50%;
-  --tx: 0px;
-  --ty: 0px;
   --s: 1;
   --o: 1;
-  --rx: 0deg;
-  --ry: 0deg;
   --pos: 50% 50%;
   --posx: 50%;
   --posy: 50%;
   --hyp: 0;
   --galaxybg: center 740px;
-  --pointer-x: 25% !important;
-  --pointer-y: 10% !important;
-  --card-scale: 1.1 !important;
-  --card-opacity: 1 !important;
-  --pointer-from-center: .9 !important;
 }
 
 
+/* -------------Root ENDE---------------------- */
 
-.card__shine,
-.card__glare {
-  
-  will-change: transform, opacity, background-image, background-size,
-    background-position, background-blend-mode, filter;
- 
+
+/* -------------CURSOR WEBSITE START---------------------- */
+.cursor {
+  position: fixed;
+  background-color: #ff0000;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  z-index: 10000;
+  transition: 0.3s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+              0.2s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.dark-mode .cursor {
+  background-color: #ff0000;
+}
+
+.cursor.active {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(2);
+}
+
+.cursor.hovered {
+  opacity: 0.08;
+}
+
+.cursor-follower {
+  position: fixed;
+  border: 2px solid rgb(255, 0, 0);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  z-index: 10000;
+  transition: 0.1s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+              0.1s cubic-bezier(0.75, -0.27, 0.3, 1.33) opacity,
+              0.1s ease width, 0.1s ease height;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
 
-.main-grid {
-  color: white;
-  padding: 35px;
-  max-width: 100%;
-  margin: auto;
-    margin-top: auto;
-  margin-top: 162px;
+.cursor-follower.active {
+  opacity: 0.7;
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
-
-.showcase {
-  z-index: 99;
-  max-width: min(330px, 80vw);
-  margin: auto;
+.cursor-follower.hovered {
+  opacity: 0.08;
 }
 
+/* -------------CURSOR WEBSITE ENDE---------------------- */
 
+/* -------------------- Grid layout filter Start ------------------------*/
 
-.card-grid.svelte-12sq7m7 {
-display: grid;
-grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
-grid-column-gap: 14px;
-grid-row-gap: 14px;
-transform-style: preserve-3d;
-height: 100%;
-max-width: 1333px;
-margin: auto;
-position: relative;
-min-width: 260px;
-transition: transform 0.2s ease;
+#grid-wrapper {
+  margin: 4rem auto;
+  width: 300px;
+  display: flex;
+  justify-content: center;
 }
 
-.card-grid.active.svelte-12sq7m7 {
-  z-index: 99;
+.grid-section {
+  background-color: rgba(50, 50, 50, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.3rem;
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-@media screen and (min-width: 600px) {
-  .card-grid.svelte-12sq7m7 {
-      grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet */
-  }
+label {
+  color: #ffffff;
+  font-size: 1em;
 }
 
-@media screen and (min-width: 900px) {
-  .card-grid.svelte-12sq7m7 {
-      grid-template-columns: repeat(4, 1fr); /* 4 columns on larger screens */
-  }
+.example-button {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  color: #b16d00;
+  padding: 0.3rem 1.5rem;
+  cursor: pointer;
 }
 
-.card__glare {
-  transform: translateZ(1.4px);
-  background: radial-gradient(farthest-corner circle at var(--mx) var(--my),
-      rgba(255, 255, 255, .8) 10%, rgba(255, 255, 255, .65) 20%, rgba(0, 0, 0, .5) 90%);
-  mix-blend-mode: overlay;
-  opacity: var(--o);
+.example-button.active {
+  border: 1px solid #b16d00;
 }
 
-
-
-
-.card__glare.vmax {
-  background: radial-gradient(farthest-corner circle at var(--mx) var(--my),
-      rgba(255, 255, 255, .75) 0%, rgba(99, 99, 99, .35) 45%, rgba(0, 0, 0, 1) 120%);
+.example-button:hover,
+.example-button:focus {
+  border: 1px solid #b16d00;
 }
 
-
-
-
-.card__shine {
-  display: grid;
-  overflow: hidden;
-  z-index: 3;
-  transform: translateZ(1px);
-  background: transparent;
-  mix-blend-mode: color-dodge;
-  filter: brightness(.85) contrast(2.75) saturate(.65);
-  background-size: cover;
-  background-position: center;
-  opacity: var(--o);
+.example-button > img {
+  height: 1.25rem;
+  width: 1.25rem;
 }
+/* -------------------- Grid layout filter END ------------------------*/
 
-.card__shine:before {
-  grid-area: 1 / 1;
-  transform: translateZ(1px);
-}
-
-.card__shine:after {
-  grid-area: 1 / 1;
-  transform: translateZ(1.2px);
-  border-radius: var(--radius);
-}
-
-
-
-
-/* Glow Border At the Card */
-.card.svelte-166jv0z {
-  --radius: 4.55% / 3.5%;
-  --back: #004177;
-  --glow: #ffffff;
-  z-index: calc(var(--s) * 100);
-  transform: translateZ(.1px);
-  will-change: transform, visibility;
-  transform-style: preserve-3d;
-}
-
-.card.interacting.svelte-166jv0z {
-  z-index: calc(var(--s) * 120);
-}
-
-
-
-
-
-
-
-
-
-
-
-.card.active.svelte-166jv0z .card__rotator,
-.card.active.svelte-166jv0z .card__translater {
-  touch-action: none;
-}
-
-
-
-.card__rotator.svelte-166jv0z,
-.card__translater.svelte-166jv0z {
-  display: grid;
-  perspective: 600px;
-  transform-origin: center;
-  will-change: transform;
-}
-
-.card__translater.svelte-166jv0z {
-  width: auto;
-  position: relative;
-  transform: translate3d(var(--tx), var(--ty), 0) scale(var(--s));
-}
-
-.card__rotator.svelte-166jv0z {
-  transform: rotateY(var(--rx)) rotateX(var(--ry));
-  transform-style: preserve-3d;
-  box-shadow: 0 10px 20px -5px #000;
-  border-radius: var(--radius);
-  outline: none;
-  transition: box-shadow 0.4s ease, outline 0.2s ease;
-}
-
-button.card__rotator.svelte-166jv0z {
-  appearance: none;
-  border: none;
-  background: top;
-  padding: 0;
-}
-
-.card.active.svelte-166jv0z .card__rotator {
-  box-shadow: 0 0 10px 0 var(--glow), 0 0 10px 0 var(--glow), 0 0 30px 0 var(--glow);
-}
-
-.card__rotator.svelte-166jv0z:focus {
-  box-shadow: 0 0 10px 0 var(--glow), 0 0 10px 0 var(--glow), 0 0 30px 0 var(--glow);
-}
-
-
-.card.active.svelte-166jv0z .card__rotator:focus {
-  box-shadow: 0 10px 30px 3px #000;
-}
-
-.card__rotator.svelte-166jv0z * {
-  width: 100%;
-  display: grid;
-  grid-area: 1 / 1;
-  border-radius: var(--radius);
-  image-rendering: optimizeQuality;
-  transform-style: preserve-3d;
-}
-
-
-/* Image der Karten */
-.card__rotator.svelte-166jv0z img {
-  outline: 1px solid transparent;
-  aspect-ratio: 0.6;
-  height: auto;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card__back.svelte-166jv0z {
-  background-color: var(--back);
-  transform: rotateY(180deg) translateZ(1px);
-  backface-visibility: visible;
-}
-
-.card__front.svelte-166jv0z {
-  backface-visibility: hidden;
-  opacity: 1;
-  transition: opacity 0.33s ease-out;
-}
-
-.loading.svelte-166jv0z .card__front {
-  opacity: 0;
-}
-
-.loading.svelte-166jv0z .card__back {
-  transform: rotateY(0);
-}
-
-
-
-
-
-
-* {
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
-  scroll-padding-top: 2em;
-  min-width: 260px;
-}
-
-body {
-  font-family: Roboto;
-  background-color: rgb(0, 0, 0);
-  font-family: 'Poppins', sans-serif;
-  overflow: auto;
-}
-
-a {
-  color: var(--primary);
-  transition: all 0.3s ease;
-}
-
-a:hover, a:focus {
-  color: var(--link-hover);
-}
-
-
-/*Media Query bearbeiten unnötig drin?*/
-@media screen and (min-width: 600px) {
-  header {
-      grid-template-columns: 0% 1fr;
-  }
-
-  .showcase {
-      grid-column: 2;
-      grid-row: 2 / 5;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  header {
-      grid-template-columns: 0% 1fr;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-/*--------------------------------RESET BUTTON------------------------------- */
-
-
+/*-------------------------RESET BUTTON Start --------------------------- */
 
 .Resetbutton {
   position: relative;
@@ -377,13 +215,9 @@ a:hover, a:focus {
   color: #b16d00; /* Customize hover color */
 }
 
+/*-------------------------RESET BUTTON END --------------------------- */
 
-
-
-
-
-
-/*--------------------------------FIELD START------------------------------- */
+/*-------------------------------FILTER START------------------------------- */
 
 /* For the Mouse Tracker */
 /* For the Folie Choose */
@@ -518,24 +352,10 @@ a:hover, a:focus {
 
 
 
-/*--------------------------------FIELD ENDE------------------------------- */
+/*--------------------------------FILTER ENDE------------------------------- */
 
 
-
-
-
-
-
-
-
-
-
-
-
-/*--------------------------------TOOLBAR START ------------------------------- */
-
-
-
+/*--------------------------------Sort by Filter START ------------------------------- */
 
 
 .filtering {
@@ -592,49 +412,146 @@ a:hover, a:focus {
   font-family: 'Poppins', sans-serif;
 }
 
+/*--------------------------------Sort by Filter START ------------------------------- */
 
 
 
-/*--------------------------------CARD TEXT BY HOVER START ------------------------------- */
 
 
 
-.card__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+
+
+
+/* ----------------------------------- */
+/* ----------------------------------- */
+/* ---- Holo CSS BUILD START---------- */
+/* ----------------------------------- */
+/* ----------------------------------- */
+
+/* -------------------- CARDS GRID CSS BEGINNT AB HIER ----------- */
+.main-grid {
+  color: white;
+  padding: 35px;
+  max-width: 100%;
+  margin: 45px auto 0;
+}
+
+/* Card-grid container */
+.card-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr); /* Default to 2 columns */
+grid-column-gap: 14px;
+grid-row-gap: 14px;
+transform-style: preserve-3d;
+height: 100%;
+max-width: 1333px;
+margin: auto;
+position: relative;
+min-width: 260px;
+transition: transform 0.2s ease;
+}
+
+
+
+
+/* Standard Layout (PC View, ab 992px) */
+.card-grid.layout-1 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card-grid.layout-2 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.card-grid.layout-3 {
+  grid-template-columns: repeat(8, 1fr);
+}
+
+/* Tablet View (zwischen 771px und 991px) */
+@media screen and (max-width: 991px) and (min-width: 771px) {
+  .card-grid.layout-1 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card-grid.layout-2 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .card-grid.layout-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* Handy View (bis 770px) */
+@media screen and (max-width: 770px) {
+  .card-grid.layout-1 {
+    grid-template-columns: repeat(2, 1fr); /* 1 Spalte */
+  }
+
+  .card-grid.layout-2 {
+    grid-template-columns: repeat(4, 1fr); /* 1 Spalte */
+  }
+
+  .card-grid.layout-3 {
+    grid-template-columns: repeat(1, 1fr); /* 1 Spalte */
+  }
+}
+
+
+/*-- class = card holographic  START --*/
+
+/* ohne das funktioniert holo nicht */
+.holographic * {
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  display: grid;
+  grid-area: 1 / 1;
+  border-radius: var(--radius);
+  image-rendering: optimizeQuality;
+  appearance: none;
+  border: none;
+  padding: 0;
 }
 
-.card:hover .card__overlay {
-  opacity: 1; /* Show overlay on hover */
+/* Glow Border At the Card */
+.card.holographic {
+  --radius: 4.55% / 3.5%;
+  z-index: calc(var(--s) * 100);
+  transform: translateZ(.1px);
+  will-change: transform, visibility;
+  position: relative; /* Ensure positioning context for child elements */
+  overflow: hidden; /* Hide overflow from child elements */
 }
 
-.card__text {
-  color: #fff; /* Text color */
-  font-size: 1.5rem; /* Text size */
-  font-weight: bold;
-  text-transform: uppercase;
+.card.interacting.holographic {
+  z-index: calc(var(--s) * 120);
+}
+
+/*-- class = card holographic  ENDE --*/
+
+
+
+
+
+.card_images {
+  height: 555px;
+  object-fit: cover;
 }
 
 
 
-/*--------------------------------CARD TEXT BY HOVER END ------------------------------- */
 
 
 
-/* ----------------------------------- */
-/* ----------------------------------- */
-/* ----------- NOTE FOR YOU!---------- */
-/* ----------------------------------- */
-/* ----------------------------------- */
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -655,7 +572,89 @@ a:hover, a:focus {
 /* ----------------------------------- */
 /* ----------------------------------- */
 
+
+/* -------------------- CSS FÜR ALLE Effekte START ------------------------*/
+
+
+.card__shine {
+  display: grid;
+  overflow: hidden;
+  z-index: 3;
+  transform: translateZ(1px);
+  background: transparent;
+  mix-blend-mode: color-dodge;
+  filter: brightness(.85) contrast(2.75) saturate(.65);
+  background-size: cover;
+  background-position: center;
+  opacity: var(--o);
+}
+
+.card__shine:before {
+  grid-area: 1 / 1;
+  transform: translateZ(1px);
+}
+
+.card__shine:after {
+  grid-area: 1 / 1;
+  transform: translateZ(1.2px);
+  border-radius: var(--radius);
+}
+
+
+.card__shine,
+.card__glare {
   
+  will-change: transform, opacity, background-image, background-size,
+    background-position, background-blend-mode, filter;
+ 
+}
+
+
+.card__glare {
+  transform: translateZ(1.4px);
+  background: radial-gradient(farthest-corner circle at var(--mx) var(--my),
+      rgba(255, 255, 255, .8) 10%, rgba(255, 255, 255, .65) 20%, rgba(0, 0, 0, .5) 90%);
+  mix-blend-mode: overlay;
+  opacity: var(--o);
+}
+
+
+.card__glare.vmax {
+  background: radial-gradient(farthest-corner circle at var(--mx) var(--my),
+      rgba(255, 255, 255, .75) 0%, rgba(99, 99, 99, .35) 45%, rgba(0, 0, 0, 1) 120%);
+}
+
+
+
+
+.card__shine {
+  display: grid;
+  overflow: hidden;
+  z-index: 3;
+  transform: translateZ(1px);
+  background: transparent;
+  mix-blend-mode: color-dodge;
+  filter: brightness(.85) contrast(2.75) saturate(.65);
+  background-size: cover;
+  background-position: center;
+  opacity: var(--o);
+}
+
+.card__shine:before {
+  grid-area: 1 / 1;
+  transform: translateZ(1px);
+}
+
+.card__shine:after {
+  grid-area: 1 / 1;
+  transform: translateZ(1.2px);
+  border-radius: var(--radius);
+}
+/* -------------------- CSS FÜR ALLE Effekte ENDE ------------------------*/
+
+
+
+
   
   /* -------------------- rare holo ------------------------*/
   
@@ -1000,6 +999,9 @@ a:hover, a:focus {
   
     opacity: calc(var(--o) * .66);
   }
+
+
+
 
   /* -------------------- rare holo vstar ------------------------*/
   
@@ -1585,14 +1587,12 @@ a:hover, a:focus {
       hsl(93, 56%, 50%) calc(var(--space)*11), 
       hsl(53, 65%, 60%) calc(var(--space)*12) 
     ), 
-    radial-gradient( 
-      farthest-corner circle 
-      at var(--pointer-x) var(--pointer-y), 
+    radial-gradient(
+      farthest-corner circle at 25% 10%, 
       hsla(180, 100%, 89%, 0.5) 5%, 
       hsla(180, 14%, 57%, 0.3) 40%, 
-      hsl(0, 0%, 0%) 130% 
+      hsl(0, 0%, 0%) 130%
   );
-
   background-blend-mode: 
     color-burn, 
     multiply;
@@ -1700,20 +1700,17 @@ a:hover, a:focus {
 
 
 .card[data-rarity="rare holo cosmos"] .card__glare {
-  
   background-image: 
-    radial-gradient( 
-      farthest-corner circle at var(--pointer-x) var(--pointer-y), 
+    radial-gradient(
+      farthest-corner circle at 25% 10%, 
       hsla(204, 100%, 95%, 0.8) 5%, 
-      hsla(250, 15%, 20%, 1) 150% 
+      hsla(250, 15%, 20%, 1) 150%
     );
-  filter: brightness(.75) contrast(2) saturate(2);
+  filter: brightness(0.75) contrast(2) saturate(2);
   mix-blend-mode: overlay;
-  opacity: calc( var(--card-opacity) * ( 0.25 + var(--pointer-from-center) ) );
-
+  opacity: calc(1 * (0.25 + var(--pointer-from-center)));
   border-radius: 10px;
   border: 1px solid #000;
-    
 }
 
 .card[data-rarity="rare holo cosmos"] .card__glare:after {
@@ -1721,11 +1718,10 @@ a:hover, a:focus {
   content: "";
 
   background-image: 
-    radial-gradient( farthest-corner circle at 
-      var(--pointer-x) var(--pointer-y), 
-      hsl(280, 100%, 96%) 5%, 
-      hsl(0, 0%, 10%) 60%
-    );
+  radial-gradient(farthest-corner circle at 25% 10%, 
+    hsl(280, 100%, 96%) 5%, 
+    hsl(0, 0%, 10%) 60%
+  );
 
   filter: brightness(.75) contrast(2.5) saturate(2);
   mix-blend-mode: soft-light;
@@ -1742,133 +1738,22 @@ a:hover, a:focus {
 
 
 
-/* -------------------- yu-gi-oh holo ------------------------*/
 
 
 
-.card[data-rarity="yu-gi-oh holo"] .card__shine {
-
-  --space: 6%; /* Adjusted for a more pronounced shine effect */
-
-  clip-path: var(--clip);
-
-  background-image:
-  url("img/151/birthday-holo-dank.webp");
-
-  background-blend-mode: screen, overlay;
-  
-
-  background-position: 
-    calc(((var(--posx) - 50%) * -2.5) + 50%) calc(((var(--posy) - 50%) * -2.5) + 50%), 
-    calc(((var(--posx) - 50%) * 1.5) + 50%) calc(((var(--posy) - 50%) * 1.5) + 50%), 
-    center center;
-
-  background-size: cover, 400% 900%, cover;
-
-  filter: brightness(1.2) contrast(1.3) saturate(1.1);
-  mix-blend-mode: screen;
-
-}
-
-.card[data-rarity="yu-gi-oh holo"] .card__shine:before {
-
-  content: "";
-  z-index: 2;
-
-  background-image: 
-  url("img/151/birthday-holo-dank-2.webp"), 
-  repeating-linear-gradient(
-    85deg, 
-    hsl(200, 70%, 50%) calc(var(--space)*1), 
-    hsl(300, 60%, 45%) calc(var(--space)*2), 
-    hsl(60, 70%, 50%) calc(var(--space)*3), 
-    hsl(120, 50%, 40%) calc(var(--space)*4), 
-    hsl(240, 50%, 55%) calc(var(--space)*5), 
-    hsl(340, 60%, 50%) calc(var(--space)*6), 
-    hsl(340, 60%, 50%) calc(var(--space)*7), 
-    hsl(240, 50%, 55%) calc(var(--space)*8), 
-    hsl(120, 50%, 40%) calc(var(--space)*9), 
-    hsl(60, 70%, 50%) calc(var(--space)*10), 
-    hsl(300, 60%, 45%) calc(var(--space)*11), 
-    hsl(200, 70%, 50%) calc(var(--space)*12)
-  ), 
-  radial-gradient( 
-    farthest-corner circle 
-    at var(--posx) var(--posy), 
-    hsla(220, 100%, 90%, 0.8) 10%, 
-    hsla(220, 30%, 40%, 0.6) 50%, 
-    hsl(0, 0%, 0%) 150% 
-    );
-
-  background-blend-mode: 
-    lighten, 
-    multiply;
-
-  background-position: 
-    var(--cosmosbg, center center), 
-    calc( 18% + ( var(--posx) * 65% ) ) calc( 18% + ( var(--posy) * 65% ) ), 
-    center center;
-
-  background-size: cover, 400% 900%, cover;
-
-  filter: brightness(1.3) contrast(1.6) saturate(.9);
-  mix-blend-mode: overlay;
-
-}
-
-.card[data-rarity="yu-gi-oh holo"] .card__shine:after {
-  
-  content: "";
-  z-index: 3;
-
-  background-image: 
-    url(""), 
-    repeating-linear-gradient(
-      85deg, 
-      hsl(200, 70%, 50%) calc(var(--space)*1), 
-      hsl(300, 60%, 45%) calc(var(--space)*2), 
-      hsl(60, 70%, 50%) calc(var(--space)*3), 
-      hsl(120, 50%, 40%) calc(var(--space)*4), 
-      hsl(240, 50%, 55%) calc(var(--space)*5), 
-      hsl(340, 60%, 50%) calc(var(--space)*6), 
-      hsl(340, 60%, 50%) calc(var(--space)*7), 
-      hsl(240, 50%, 55%) calc(var(--space)*8), 
-      hsl(120, 50%, 40%) calc(var(--space)*9), 
-      hsl(60, 70%, 50%) calc(var(--space)*10), 
-      hsl(300, 60%, 45%) calc(var(--space)*11), 
-      hsl(200, 70%, 50%) calc(var(--space)*12)
-    );
-
-  background-blend-mode: 
-    multiply, 
-    multiply;
-
-  background-position: 
-    var(--cosmosbg, center center), 
-    calc( 20% + ( var(--posx) * 55% ) ) calc( 20% + ( var(--posy) * 55% ) ), 
-    center center;
-
-  background-size: cover, 400% 900%, cover;
-
-  filter: brightness(1.3) contrast(1.6) saturate(.9);
-  mix-blend-mode: multiply;
-
-}
 
 
-.card[data-rarity="yu-gi-oh holo"] .card__glare {
-  
-  background-image: 
-    radial-gradient( 
-      farthest-corner circle at var(--posx) var(--posy), 
-      hsla(210, 100%, 95%, 0.7) 10%, 
-      hsla(220, 20%, 20%, 0.5) 60% 
-    );
-  filter: brightness(.8) contrast(2.2) saturate(1.8);
-  mix-blend-mode: overlay;
-  opacity: calc( var(--card-opacity) * ( 0.3 + var(--pointer-from-center) ) );
-    
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

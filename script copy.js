@@ -8,23 +8,35 @@
 const initialStyles = new WeakMap();
 
 function saveInitialStyles(card) {
-  // Initialwerte sichern
-  const computedStyle = window.getComputedStyle(card);
-  
   initialStyles.set(card, {
-    transform: computedStyle.transform || 'rotateX(0deg) rotateY(0deg) scale(1)',
-    mx: computedStyle.getPropertyValue('--mx').trim() || '0%',
-    my: computedStyle.getPropertyValue('--my').trim() || '0%',
-    s: computedStyle.getPropertyValue('--s').trim() || '1',
-    o: computedStyle.getPropertyValue('--o').trim() || '1',
-    pos: computedStyle.getPropertyValue('--pos').trim() || '0% 0%',
-    posx: computedStyle.getPropertyValue('--posx').trim() || '0%',
-    posy: computedStyle.getPropertyValue('--posy').trim() || '0%',
-    hyp: computedStyle.getPropertyValue('--hyp').trim() || '0',
-    galaxybg: computedStyle.getPropertyValue('--galaxybg').trim() || 'initial',
+    transform: card.style.transform,
+    mx: card.style.getPropertyValue('--mx'),
+    my: card.style.getPropertyValue('--my'),
+    s: card.style.getPropertyValue('--s'),
+    o: card.style.getPropertyValue('--o'),
+    pos: card.style.getPropertyValue('--pos'),
+    posx: card.style.getPropertyValue('--posx'),
+    posy: card.style.getPropertyValue('--posy'),
+    hyp: card.style.getPropertyValue('--hyp'),
+    galaxybg: card.style.getPropertyValue('--galaxybg'),
   });
 }
 
+function restoreInitialStyles(card) {
+  const styles = initialStyles.get(card);
+  if (styles) {
+    card.style.transform = styles.transform;
+    card.style.setProperty('--mx', styles.mx);
+    card.style.setProperty('--my', styles.my);
+    card.style.setProperty('--s', styles.s);
+    card.style.setProperty('--o', styles.o);
+    card.style.setProperty('--pos', styles.pos);
+    card.style.setProperty('--posx', styles.posx);
+    card.style.setProperty('--posy', styles.posy);
+    card.style.setProperty('--hyp', styles.hyp);
+    card.style.setProperty('--galaxybg', styles.galaxybg);
+  }
+}
 
 function OrientCard(e) {
   const card = e.currentTarget;
@@ -37,43 +49,25 @@ function OrientCard(e) {
   const Xdeg = clamp(-mvY / (rect.height / 2) * maxTilt, -maxTilt, maxTilt);
   const Ydeg = clamp(mvX / (rect.width / 2) * maxTilt, -maxTilt, maxTilt);
 
-  gsap.to(card, {
-    duration: 0.5,
-    transform: `rotateX(${Xdeg}deg) rotateY(${Ydeg}deg) scale(1.05)`,
-    "--mx": `${40 - (Ydeg * 2.5)}%`,
-    "--my": `${5 + Xdeg / 2}%`,
-    "--pos": `${Ydeg * 2.5}% ${Xdeg * 0.5}%`,
-    "--posx": `${50 + Ydeg / 2 + Xdeg * 0.5}%`,
-    "--posy": `${50 + Xdeg / 2 + Ydeg / 2}%`,
-    "--hyp": `${Math.min(Math.max(Math.sqrt((mvX * mvX) + (mvY * mvY)) / 50, 0), 1)}`,
-    ease: "power4.out",
-    overwrite: true // Overwrite previous GSAP animations
-  });
-}
+  card.style.transform = `rotateX(${Xdeg}deg) rotateY(${Ydeg}deg) scale(var(--scale, 1))`;
+  card.style.setProperty('--mx', `${40 - (Ydeg * 2.5)}%`);
+  card.style.setProperty('--my', `${5 + Xdeg / 2}%`);
+  card.style.setProperty('--pos', `${Ydeg * 2.5}% ${Xdeg * 0.5}%`);
+  card.style.setProperty('--posx', `${50 + Ydeg / 2 + Xdeg * 0.5}%`);
+  card.style.setProperty('--posy', `${50 + Xdeg / 2 + Ydeg / 2}%`);
 
-function handleMouseLeave(e) {
-  const card = e.currentTarget;
-  const initial = initialStyles.get(card);
-
-  if (initial) {
-    gsap.to(card, {
-      duration: 0.5,
-      transform: initial.transform,
-      "--mx": initial.mx,
-      "--my": initial.my,
-      "--pos": initial.pos,
-      "--posx": initial.posx,
-      "--posy": initial.posy,
-      "--hyp": initial.hyp,
-      "--scale": initial.s,
-      ease: "power4.inOut",
-      overwrite: true // Overwrite previous GSAP animations
-    });
-  }
+  const hyp = Math.sqrt((mvX * mvX) + (mvY * mvY)) / 50;
+  card.style.setProperty('--hyp', `${Math.min(Math.max(hyp, 0), 1)}`);
+  card.style.setProperty('--scale', '1.05');
 }
 
 function clamp(value, min = -20, max = 20) {
   return Math.min(Math.max(value, min), max);
+}
+
+function handleMouseLeave(e) {
+  const card = e.currentTarget;
+  restoreInitialStyles(card);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -100,13 +94,13 @@ function orientationhandler(event) {
   const beta = event.beta;   // Neigung um die X-Achse (-180 bis 180 Grad)
   const gamma = event.gamma; // Neigung um die Y-Achse (-90 bis 90 Grad)
 
-  gsap.to(".card", {
-    duration: 0.5,
-    transform: `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`,
-    ease: "power2.out",
-    overwrite: true // Overwrite previous GSAP animations
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    card.style.transform = `rotateX(${beta}deg) rotateY(${gamma}deg) rotateZ(${alpha}deg)`;
   });
 }
+
+
 
 
 

@@ -1,0 +1,23 @@
+{
+  "name": "card-effekt-maker-projekt",
+  "version": "1.0.0",
+  "description": "<details open>\r     <summary><h2>⚡ SHOWCASE - Images ⚡</h2></summary>\r <p align=\"center\">\r <img alt=\"Image\" title=\"Image\" src=\"https://github.com/GylanSalih/Card-Effect-Maker/blob/main/showcase_cards1.png\"/>\r <img alt=\"Image\" title=\"Image\" src=\"https://github.com/GylanSalih/Card-Effect-Maker/blob/main/showcase_cards2.png\"/>\r </p>\r </details>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "coming soon"
+  },
+  "keywords": [
+    "website",
+    "portfolio"
+  ],
+  "author": "work in progress",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "jquery": "^3.7.1"
+  }
+}
